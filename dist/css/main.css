@@ -29,6 +29,7 @@ a {
   max-width: 1280px;
   margin: auto;
   padding: 10px 0px;
+  padding-left: 20px;
 }
 
 .nav h1 {
@@ -45,7 +46,7 @@ a {
   transition: color 0.25s ease-in-out;
 }
 
-.current {
+#current {
   color: #0061bd;
 }
 
@@ -64,12 +65,23 @@ button:hover {
   color: #1d1d1d;
 }
 
+button:focus {
+  outline: none;
+  border: none;
+}
+
 input {
   padding: 5px 10px;
   margin: 0px 10px;
+  width: 600px;
   background-color: #111111;
   border: 1px solid #525252;
   color: #cecece;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #0061bd;
 }
 
 select {
@@ -80,8 +92,14 @@ select {
   color: #cecece;
 }
 
+select:focus {
+  outline: none;
+  border: 1px solid #0061bd;
+}
+
 .main-wrap {
   max-width: 1280px;
+  min-width: 800px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -114,6 +132,29 @@ select {
 }
 
 .menu-bar {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
+}
+
+.asset-grid-wrapper {
+  max-width: 1280px;
+  margin-top: 50px;
+  margin: 50px auto;
+}
+
+.asset-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  grid-gap: 20px;
+  margin: 0px 20px;
+}
+
+.asset-card {
+  max-width: 450px;
+  width: 100%;
+  height: 175px;
+  background-color: #354a86;
+  padding: 10px;
 }

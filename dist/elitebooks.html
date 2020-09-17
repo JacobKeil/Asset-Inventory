@@ -10,7 +10,7 @@
     <div class="nav">
       <h1>Asset Inventory</h1>
       <div class="links">
-        <a href="elitebooks.html" class="current">Elitebooks</a>
+        <a href="elitebooks.html" id="current">Elitebooks</a>
         <a href="zbooks.html">ZBooks</a>
         <a href="monitors.html">Monitors</a>
         <a href="docks.html">Docks</a>
@@ -25,5 +25,19 @@
         <option value="Owner">Owner</option>
       </select>
     </div>
+
+    <div class="asset-grid-wrapper">
+      <div class="asset-list-grid" id="asset-grid"></div>
+    </div>
+
+    <div id="newEntry" class="modal">
+      <div class="modal-content">
+        <h1>Test</h1>
+        <button>Add</button>
+        <button>Cancel</button>
+      </div>
+    </div>
+
+    <script src="js/elitebooks.js"></script>
   </body>
 </html>
