@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Elitebooks</title>
+  </head>
+  <body>
+    <div class="nav">
+      <h1>Asset Inventory</h1>
+      <div class="links">
+        <a href="elitebooks.html" class="current">Elitebooks</a>
+        <a href="zbooks.html">ZBooks</a>
+        <a href="monitors.html">Monitors</a>
+        <a href="docks.html">Docks</a>
+      </div>
+    </div>
+    <div class="menu-bar">
+      <button id="new-button" onclick="newEntry()">New</button>
+      <input type="text" placeholder="Search..." />
+      <select name="SearchFilter" id="filter">
+        <option value="Name">Name</option>
+        <option value="AssetTag">Asset Tag</option>
+        <option value="Owner">Owner</option>
+      </select>
+    </div>
+  </body>
+</html>

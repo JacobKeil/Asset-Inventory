@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #111111;
+  font-family: "Oswald", sans-serif;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+.nav h1 {
+  color: #b9b9b9;
+}
+
+.links {
+  display: flex;
+}
+
+.links a {
+  padding: 10px 20px;
+  color: #b9b9b9;
+  transition: color 0.25s ease-in-out;
+}
+
+.current {
+  color: #0061bd;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 30px;
+  margin: 0px 10px;
+  background-color: #0061bd;
+  border: none;
+  color: #eeeeee;
+  transition: all 0.25s ease-in-out;
+}
+
+button:hover {
+  background-color: #eeeeee;
+  color: #1d1d1d;
+}
+
+input {
+  padding: 5px 10px;
+  margin: 0px 10px;
+  background-color: #111111;
+  border: 1px solid #525252;
+  color: #cecece;
+}
+
+select {
+  padding: 5px 10px;
+  margin: 0px 10px;
+  border: 1px solid #525252;
+  background-color: #111111;
+  color: #cecece;
+}
+
+.main-wrap {
+  max-width: 1280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+  width: 100%;
+  margin: 25px auto;
+  background-color: #72a2ad;
+  padding: 30px;
+  transition: all 0.15s ease-in-out;
+}
+
+.card img {
+  width: 175px;
+  height: 100px;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.menu-bar {
+  text-align: center;
+  margin-top: 20px;
+}
