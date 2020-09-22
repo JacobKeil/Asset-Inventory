@@ -23,6 +23,12 @@ a {
   text-decoration: none;
 }
 
+.inline-i {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -53,7 +59,7 @@ a {
 button {
   cursor: pointer;
   padding: 5px 30px;
-  margin: 0px 10px;
+  margin-right: 10px;
   background-color: #0061bd;
   border: none;
   color: #eeeeee;
@@ -70,7 +76,7 @@ button:focus {
   border: none;
 }
 
-input {
+#search-input {
   padding: 5px 10px;
   margin: 0px 10px;
   width: 600px;
@@ -79,12 +85,22 @@ input {
   color: #cecece;
 }
 
+.modal-input {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  width: 100%;
+  background-color: #222222;
+  border: 1px solid #525252;
+  color: #cecece;
+  font-family: "Oswald", sans-serif;
+}
+
 input:focus {
   outline: none;
   border: 1px solid #0061bd;
 }
 
-select {
+#search-select {
   padding: 5px 10px;
   margin: 0px 10px;
   border: 1px solid #525252;
@@ -92,9 +108,35 @@ select {
   color: #cecece;
 }
 
-select:focus {
+#search-select:focus {
   outline: none;
   border: 1px solid #0061bd;
+}
+
+#modal-select {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border: 1px solid #525252;
+  background-color: #222222;
+  color: #cecece;
+}
+
+#modal-select:focus {
+  outline: none;
+}
+
+textarea {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #222222;
+  border: 1px solid #525252;
+  color: #cecece;
+  font-family: "Oswald", sans-serif;
+}
+
+textarea:focus {
+  outline: none;
 }
 
 .main-wrap {
@@ -113,9 +155,13 @@ select:focus {
   height: 150px;
   width: 100%;
   margin: 25px auto;
-  background-color: #72a2ad;
+  background-color: #144d83;
   padding: 30px;
   transition: all 0.15s ease-in-out;
+}
+
+.card h1 {
+  color: #d3d3d3;
 }
 
 .card img {
@@ -135,6 +181,8 @@ select:focus {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
 }
 
 .asset-grid-wrapper {
@@ -157,4 +205,32 @@ select:focus {
   height: 175px;
   background-color: #354a86;
   padding: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  max-width: 600px;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: #222222;
+  margin: 10% auto;
+  padding: 20px;
+  width: 40%;
+}
+
+.modal-content h2 {
+  padding-bottom: 28px;
+  color: #b9b9b9;
 }
