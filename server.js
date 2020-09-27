@@ -1,31 +1,49 @@
 const bodyParser = require("body-parser");
 const express = require("express");
-const sqlite = require("sqlite3").verbose();
 const path = require("path");
+const ejs = require("ejs");
 
-const app = express();
-const urlEncodedParser = bodyParser.urlencoded({ extended: false });
-
-let db = new sqlite.Database(
+const db = require("better-sqlite3")(
   path.join(__dirname, "views", "db", "AssetInventory.db")
 );
 
-let sql = `SELECT * FROM Laptops`;
+const app = express();
 
-// db.each(sql, [], (err, row) => {
-//   if (err) {
-//     console.log(err);
-//   }
-//   console.log(`${row.owuser}`);
-//   getInfo(row.owuser);
-// });
-// db.close();
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + "/views"));
 
-app.set("view engine", "ejs");
-app.get("/", function (req, res) {
-  res.render("index");
+app.set("view engine", "html");
+app.engine("html", ejs.renderFile);
+app.get("/", (req, res) => res.render("index"));
+
+app.get("/laptops", (req, res) => {
+  const stmt = db.prepare("SELECT * FROM Laptops");
+  const laptops = stmt.all();
+  res.send(laptops);
+});
+
+app.get("/laptops/:column/:search", (req, res) => {
+  const stmt = db.prepare(
+    `SELECT * FROM Laptops WHERE ${req.params.column} LIKE '%${req.params.search}%'`
+  );
+  const laptops = stmt.all();
+  res.send(laptops);
+});
+
+app.post("/laptops/:name/:model/:gen/:asset/:owner/:notes", (req, res) => {
+  let insertsql = db.prepare(
+    "INSERT INTO Laptops (Name,Model,Generation,AssetTag,Owner,Notes) VALUES(?,?,?,?,?,?)"
+  );
+  insertsql.run(
+    req.params.name || "Computer name not given",
+    req.params.model || "Model not given",
+    req.params.gen || "Generation not given",
+    req.params.asset || "Asset tag not given",
+    req.params.owner || "Owner not given",
+    req.params.notes || "Notes not given"
+  );
+  res.send("User added successfully");
 });
 
 app.listen(5000, () => {
