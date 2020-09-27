@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>Elitebooks</title>
+  </head>
+  <body>
+    <div class="nav">
+      <h1>Asset Inventory</h1>
+      <div class="links">
+        <a href="laptops.html" id="current">Laptops</a>
+        <a href="monitors.html">Monitors</a>
+        <a href="docks.html">Docks</a>
+      </div>
+    </div>
+    <div class="menu-bar">
+      <button id="new-button">New</button>
+      <input id="search-input" type="text" placeholder="Search..." />
+      <h3>Search by:</h3>
+      <select name="search-filter" id="search-select">
+        <option value="Name">Computer Name</option>
+        <option value="Model">Model</option>
+        <option value="Generation">Generation</option>
+        <option value="AssetTag">Asset Tag</option>
+        <option value="Owner">Owner</option>
+      </select>
+    </div>
+
+    <div class="no-results hidden" id="no-results">
+      <h3>No results were found!</h3>
+    </div>
+
+    <div class="asset-grid-wrapper">
+      <div class="asset-list-grid" id="asset-grid"></div>
+    </div>
+
+    <div id="newEntry" class="modal">
+      <div class="modal-content">
+        <div class="inline">
+          <h2>New Laptop</h2>
+          <span id="closeModalBtn">&times;</span>
+        </div>
+        <div id="main-inputs" class="stacked">
+          <input
+            id="Name"
+            name="Name"
+            class="modal-input"
+            type="text"
+            placeholder="Computer Name..."
+          />
+          <input
+            id="AssetTag"
+            name="AssetTag"
+            class="modal-input"
+            type="text"
+            placeholder="Asset Tag..."
+          />
+          <input
+            id="Owner"
+            name="Owner"
+            class="modal-input"
+            type="text"
+            placeholder="Owner Name..."
+          />
+          <div class="inline-button">
+            <select id="Model" name="Model" class="modal-select">
+              <option value="HP 840">HP 840</option>
+              <option value="HP ZBook 15">HP ZBook 15</option>
+              <option value="HP ZBook 17">HP ZBook 17</option>
+            </select>
+            <select id="Generation" name="Generation" class="modal-select">
+              <option value="G5">G5</option>
+              <option value="G6">G6</option>
+            </select>
+          </div>
+          <input
+            id="Notes"
+            name="Notes"
+            class="modal-input"
+            type="text"
+            placeholder="Notes..."
+          />
+        </div>
+        <div class="inline">
+          <button id="add-button" class="no-margin">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/laptops.js"></script>
+  </body>
+</html>
