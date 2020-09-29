@@ -23,6 +23,17 @@ app.get("/laptops", (req, res) => {
   res.send(laptops);
 });
 
+app.get("/laptops/any/search/:search", (req, res) => {
+  const stmt = db.prepare(`SELECT * FROM Laptops WHERE (Name LIKE '%${req.params.search}%' OR
+                                                        Model LIKE '%${req.params.search}%' OR
+                                                        Generation LIKE '%${req.params.search}%' OR
+                                                        AssetTag LIKE '%${req.params.search}%' OR
+                                                        Owner LIKE '%${req.params.search}%' OR
+                                                        Notes LIKE '%${req.params.search}%')`);
+  const laptops = stmt.all();
+  res.send(laptops);
+});
+
 app.get("/laptops/:column/:search", (req, res) => {
   const stmt = db.prepare(
     `SELECT * FROM Laptops WHERE ${req.params.column} LIKE '%${req.params.search}%'`
