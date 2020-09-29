@@ -250,6 +250,86 @@ async function getAllLaptopsSearch() {
   xhr.send();
 }
 
+async function getAllLaptopsByAnySearch() {
+  if (searchInput.value == "") {
+    return;
+  }
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", `${baseUrl}/laptops/any/search/${searchInput.value}`, true);
+
+  xhr.onload = function () {
+    if (this.status == 200) {
+      var laptops = JSON.parse(this.responseText);
+      //console.log(laptops.length);
+      assetGrid.innerHTML = "";
+      laptops.forEach((laptop) => {
+        const markup =
+          `<div class="asset-card" id="${laptop.Id}">` +
+          `<div class="inline hidden">` +
+          `<h1>${laptop.Name} - ${laptop.AssetTag}</h1>` +
+          `<div class="hidden" id="control-${laptop.Id}">` +
+          `<p class="edit-icons" id="edit-${laptop.Id}"><i class="far fa-edit"></i></p>` +
+          `<p class="delete-icons" id="delete-${laptop.Id}"><i class="fas fa-trash-alt"></i></p>` +
+          `</div>` +
+          `</div>` +
+          `<h2>${laptop.Owner}</h2>` +
+          `<h2>${laptop.Model} ${laptop.Generation}</h2>` +
+          `<h3>${laptop.Notes}</h3>` +
+          `</div>`;
+        assetGrid.insertAdjacentHTML("beforeend", markup);
+        const controls = document.getElementById(`control-${laptop.Id}`);
+        document
+          .getElementById(`${laptop.Id}`)
+          .addEventListener("mouseenter", () => {
+            controls.classList.toggle("hidden");
+            controls.classList.toggle("inline");
+          });
+        document
+          .getElementById(`${laptop.Id}`)
+          .addEventListener("mouseleave", () => {
+            controls.classList.toggle("hidden");
+            controls.classList.toggle("inline");
+          });
+        document
+          .getElementById(`delete-${laptop.Id}`)
+          .addEventListener("click", () => {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", `${baseUrl}/laptops/delete/${laptop.Id}`, true);
+            xhr.send();
+            getSearch();
+          });
+        document
+          .getElementById(`edit-${laptop.Id}`)
+          .addEventListener("click", () => {
+            assetId = laptop.Id;
+            editEntryModal();
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", `${baseUrl}/laptops/get/byid/${assetId}`, true);
+            xhr.onload = function () {
+              if (this.status == 200) {
+                var laptop = JSON.parse(this.responseText);
+                Name.value = laptop[0].Name;
+                Model.value = laptop[0].Model;
+                Generation.value = laptop[0].Generation;
+                AssetTag.value = laptop[0].AssetTag;
+                Owner.value = laptop[0].Owner;
+                Notes.value = laptop[0].Notes;
+              }
+            };
+
+            xhr.send();
+          });
+      });
+      noResult(laptops);
+    } else
+      (err) => {
+        console.log(err);
+      };
+  };
+
+  xhr.send();
+}
+
 async function postLaptop() {
   var xhr = new XMLHttpRequest();
   let name = Name.value || "(No computer name)";
@@ -289,6 +369,8 @@ async function updateLaptop(id) {
 async function getSearch() {
   if (searchInput.value === "") {
     getAllLaptops();
+  } else if (searchSelect.value == "All") {
+    getAllLaptopsByAnySearch();
   } else {
     getAllLaptopsSearch();
   }
