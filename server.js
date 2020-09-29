@@ -31,20 +31,48 @@ app.get("/laptops/:column/:search", (req, res) => {
   res.send(laptops);
 });
 
+app.get("/laptops/get/byid/:id", (req, res) => {
+  const stmt = db.prepare(`SELECT * FROM Laptops WHERE Id=${req.params.id}`);
+  const laptops = stmt.all();
+  res.send(laptops);
+});
+
 app.post("/laptops/:name/:model/:gen/:asset/:owner/:notes", (req, res) => {
   let insertsql = db.prepare(
     "INSERT INTO Laptops (Name,Model,Generation,AssetTag,Owner,Notes) VALUES(?,?,?,?,?,?)"
   );
   insertsql.run(
-    req.params.name || "Computer name not given",
-    req.params.model || "Model not given",
-    req.params.gen || "Generation not given",
-    req.params.asset || "Asset tag not given",
-    req.params.owner || "Owner not given",
-    req.params.notes || "Notes not given"
+    req.params.name,
+    req.params.model,
+    req.params.gen,
+    req.params.asset,
+    req.params.owner,
+    req.params.notes
   );
   res.send("User added successfully");
 });
+
+app.post("/laptops/delete/:id", (req, res) => {
+  let deletesql = db.prepare(`DELETE FROM Laptops WHERE Id=${req.params.id}`);
+  deletesql.run();
+  res.send("User deleted successfully");
+});
+
+app.post(
+  "/laptops/update/:id/:name/:model/:gen/:asset/:owner/:notes",
+  (req, res) => {
+    let insertsql = db.prepare(
+      `UPDATE Laptops SET Name='${req.params.name}',
+                          Model='${req.params.model}',
+                          Generation='${req.params.gen}',
+                          AssetTag='${req.params.asset}',
+                          Owner='${req.params.owner}',
+                          Notes='${req.params.notes}'  WHERE Id=${req.params.id}`
+    );
+    insertsql.run();
+    res.send("User updated successfully");
+  }
+);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
