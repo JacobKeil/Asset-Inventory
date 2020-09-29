@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>Elitebooks</title>
+    <script
+      src="https://kit.fontawesome.com/f9371e1f01.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="nav">
@@ -25,6 +29,7 @@
         <option value="Generation">Generation</option>
         <option value="AssetTag">Asset Tag</option>
         <option value="Owner">Owner</option>
+        <option value="Notes">Notes</option>
       </select>
     </div>
 
@@ -39,7 +44,7 @@
     <div id="newEntry" class="modal">
       <div class="modal-content">
         <div class="inline">
-          <h2>New Laptop</h2>
+          <h2 id="modal-title">New Laptop</h2>
           <span id="closeModalBtn">&times;</span>
         </div>
         <div id="main-inputs" class="stacked">
@@ -85,6 +90,7 @@
         </div>
         <div class="inline">
           <button id="add-button" class="no-margin">Add</button>
+          <button id="save-button" class="no-margin">Save</button>
         </div>
       </div>
     </div>
