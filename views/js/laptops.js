@@ -1,5 +1,4 @@
 var modal = document.getElementById("newEntry");
-var modalTitle = document.getElementById("modal-title");
 var newButton = document.getElementById("new-button");
 var addButton = document.getElementById("add-button");
 var closeButton = document.getElementById("closeModalBtn");
@@ -53,14 +52,14 @@ function editEntryModal() {
   modal.style.display = "block";
   saveButton.classList.remove("hidden");
   addButton.classList.add("hidden");
-  modalTitle.value == "Edit Laptop";
+  document.getElementById("modal-title").innerHTML = "Edit Laptop";
 }
 
 function openEntryModal() {
-  modalTitle.value = "New Laptop";
   modal.style.display = "block";
   saveButton.classList.add("hidden");
   addButton.classList.remove("hidden");
+  document.getElementById("modal-title").innerHTML = "New Laptop";
   clearInputFields("main-inputs");
 }
 
