@@ -69,8 +69,11 @@ function closeEntryModal() {
 }
 
 async function addEntry() {
-  modal.style.display = "none";
   postLaptop();
+  if (Name.value !== "" || AssetTag.value !== "") {
+    modal.style.display = "none";
+    return;
+  }
   //location.reload();
   //clearInputFields("main-inputs");
 }
@@ -331,6 +334,10 @@ async function getAllLaptopsByAnySearch() {
 }
 
 async function postLaptop() {
+  if (Name.value === "" || AssetTag.value === "") {
+    alert("Please provide the name and asset tag!");
+    return;
+  }
   var xhr = new XMLHttpRequest();
   let name = Name.value || "(No computer name)";
   let model = Model.value || "";
