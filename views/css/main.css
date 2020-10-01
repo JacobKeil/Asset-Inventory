@@ -325,4 +325,10 @@ textarea:focus {
     margin-right: 0px;
     margin-bottom: 10px;
   }
+  #titleLogo {
+    display: none;
+  }
+  .links a {
+    margin-left: -20px;
+  }
 }
