@@ -6,10 +6,10 @@ Made with Express, Node.js, and better-sqlite3
 
 Instructions to recreate project:
 
-1.) Either download .zip file or "git clone https://github.com/JacobKeil/Asset-Inventory" in the directory of your choice.
-2.) In the root of the folder, run "npm install" to install all dependencies required for the project.
-3.) Install nodemon if you want so you can run "npm run server", if you don't have nodemon you can run "npm run start".
-4.) Navigate to "localhost:5000" to view the app.
+- Either download .zip file or "git clone https://github.com/JacobKeil/Asset-Inventory" in the directory of your choice.
+- In the root of the folder, run "npm install" to install all dependencies required for the project.
+- Install nodemon if you want so you can run "npm run server", if you don't have nodemon you can run "npm run start".
+- Navigate to "localhost:5000" to view the app.
 
 Notes to read about the project:
 
