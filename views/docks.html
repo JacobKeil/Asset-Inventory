@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>Assets - Docks</title>
+    <script
+      src="https://kit.fontawesome.com/f9371e1f01.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="nav">
+      <h1 id="titleLogo">Asset Inventory - Docks</h1>
+      <div class="links">
+        <a href="/">Laptops</a>
+        <a href="/monitors">Monitors</a>
+        <a href="/docks" id="current">Docks</a>
+      </div>
+    </div>
+    <div class="menu-bar">
+      <button id="new-button">New</button>
+      <input id="search-input" type="text" placeholder="Search..." />
+      <h3>Search by:</h3>
+      <select name="search-filter" id="search-select">
+        <option value="All">All</option>
+        <option value="SerialNumber">Serial Number</option>
+        <option value="Model">Model</option>
+        <option value="AssetTag">Asset Tag</option>
+      </select>
+    </div>
+
+    <div class="no-results hidden" id="no-results">
+      <h3>No results were found!</h3>
+    </div>
+
+    <div class="asset-grid-wrapper">
+      <div class="asset-list-grid" id="asset-grid"></div>
+    </div>
+
+    <div id="newEntry" class="modal">
+      <div class="modal-content">
+        <div class="inline">
+          <h2 id="modal-title"></h2>
+          <span id="closeModalBtn">&times;</span>
+        </div>
+        <div id="main-inputs" class="stacked">
+          <input
+            id="SerialNumber"
+            name="SerialNumber"
+            class="modal-input"
+            type="text"
+            placeholder="Serial Number..."
+          />
+          <input
+            id="AssetTag"
+            name="AssetTag"
+            class="modal-input"
+            type="text"
+            placeholder="Asset Tag..."
+          />
+          <div class="inline-button">
+            <select id="Model" name="Model" class="modal-select">
+              <option value="HP Thunderbolt G2">HP Thunderbolt G2</option>
+            </select>
+          </div>
+        </div>
+        <div class="inline">
+          <button id="add-button" class="no-margin">Add</button>
+          <button id="save-button" class="no-margin">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/docks.js"></script>
+  </body>
+</html>
